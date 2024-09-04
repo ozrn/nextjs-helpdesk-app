@@ -1,5 +1,9 @@
 async function fetchTicket (id) {
-  const ticketPromisedData = await fetch(`http://localhost:8000/tickets/${id}`)
+  const ticketPromisedData = await fetch(`http://localhost:8000/tickets/${id}`, {
+    next: {
+      revalidate: 60
+    }
+  })
   
   return ticketPromisedData.json()
 }
